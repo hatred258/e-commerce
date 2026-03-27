@@ -1,0 +1,162 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Drift District</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+
+        .shimmer-text {
+            background: linear-gradient(90deg, #fff, #f5c518, #fff, #f5c518);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        @keyframes shine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating-icon {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 10px;
+            animation: float 3s ease-in-out infinite !important;
+        }
+
+        /* Cart Specific Styling */
+        .cart-container {
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #cart-items {
+            margin-top: 30px;
+            border-top: 1px solid #222;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #111;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 3px solid #f5c518;
+        }
+
+        .remove-btn {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .checkout-form input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 12px;
+            background: #111;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .checkout-form input:focus {
+            border-color: #f5c518;
+        }
+    </style>
+</head>
+<body>
+
+<div id="notification-container"></div>
+
+<header>
+    <div class="header-top">
+        <h1>DRIFT DISTRICT</h1>
+        <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        
+
+        <div class="dropdown">
+            <a>Company ▼</a>
+            <div class="dropdown-content">
+                <a href="about.html">About Us</a>
+                <a href="team.html">Our Team</a>
+                <a href="suppliers.html">Suppliers</a>
+            </div>
+        </div>
+        
+
+        <div class="dropdown">
+            <a>Support ▼</a>
+            <div class="dropdown-content">
+                <a href="contact.html">Contact</a>
+                <a href="admin.html">Admin Panel</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="cart-container">
+
+    <h2 class="floating-icon shimmer-text" style="font-size: 42px; text-align: center;">YOUR DISTRICT HAUL</h2>
+    
+    <div id="cart-items">
+
+    </div>
+
+    <div id="cart-total" style="text-align:right; margin-top: 20px; font-weight: 900; font-size: 28px; color: #fff; letter-spacing: 1px;">
+        Total: ₱0
+    </div>
+
+    <div class="checkout-form">
+        <h3 class="shimmer-text" style="margin-top: 50px; border-top: 1px solid #222; padding-top: 30px; text-align: center; font-size: 18px; letter-spacing: 3px; margin-bottom: 20px;">SHIPPING DETAILS</h3>
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="text" id="address" placeholder="Shipping Address" required>
+        <input type="tel" id="phone" placeholder="Phone Number" required pattern="[0-9]*" inputmode="numeric" onkeypress="return event.charCode >= 48 && event.charCode <= 57" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+        
+        <button class="btn checkout-btn" onclick="checkout()" style="width: 100%; padding: 18px; font-size: 18px; font-weight: 800; background: #f5c518; color: #000; border: none; cursor: pointer; border-radius: 8px; margin-top: 10px;">PLACE ORDER</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+<footer>
+    <div class="footer-content">
+        <div class="social-links">
+            <a href="#" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank" class="discord"><i class="fab fa-discord"></i></a>
+        </div>
+        <p class="copyright">
+            © 2026 DRIFT DISTRICT. STAY SIDEWAYS. 🏎️💨
+        </p>
+    </div>
+</footer>
+
+
+</body>
+</html>
