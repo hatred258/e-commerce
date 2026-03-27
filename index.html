@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drift District | Trending Drops</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .shimmer-text {
+            background: linear-gradient(90deg, #fff, #f5c518, #fff, #f5c518);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+            font-weight: 800;
+        }
+        
+        @keyframes shine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        .card:hover .shimmer-text {
+            animation-duration: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating-icon {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 10px;
+            animation: float 3s ease-in-out infinite !important;
+        }
+
+        .hero {
+            overflow: visible;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            text-transform: uppercase;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            transition: transform 0.3s, border-color 0.3s;
+            width: 100%;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            border-color: #f5c518;
+        }
+
+        .card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .review-section {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #333;
+        }
+
+        .stars {
+            color: #f5c518;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .review-count {
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .top-rated-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #f5c518;
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 12px;
+            z-index: 10;
+        }
+
+        .card.top-rated {
+            border: 3px solid #f5c518;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 40px;
+            background: #000;
+            border-bottom: 2px solid #f5c518;
+            width: 100%;
+        }
+
+        .header-top h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 3px;
+        }
+
+        .cart-icon {
+            background: #f5c518;
+            color: #000;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cart-icon:hover {
+            background: #fff;
+            transform: scale(1.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            padding: 15px 20px;
+            background: #0d0d0d;
+            border-bottom: 1px solid #222;
+            width: 100%;
+        }
+
+        nav > a, .dropdown > a {
+            color: #888;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            padding: 10px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-width: 80px;
+            height: 40px;
+            line-height: 1;
+            box-sizing: border-box;
+        }
+
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown > a {
+            margin: 0;
+        }
+
+        nav > a:hover, .dropdown:hover > a {
+            color: #f5c518;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #111;
+            min-width: 160px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            z-index: 1000;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: fadeInDown 0.3s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            color: #888;
+            text-decoration: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #222;
+            text-align: center;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background: #f5c518;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                padding: 15px 20px;
+                gap: 12px;
+            }
+            
+            .header-top h1 {
+                font-size: 20px;
+            }
+            
+            .cart-icon {
+                padding: 6px 14px;
+                font-size: 12px;
+            }
+            
+            nav {
+                gap: 8px;
+                padding: 12px 10px;
+            }
+            
+            nav > a, .dropdown > a {
+                font-size: 10px;
+                padding: 8px 10px;
+                min-width: 60px;
+                height: 36px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-top h1 {
+                font-size: 18px;
+            }
+            
+            nav {
+                gap: 5px;
+            }
+            
+            nav > a, .dropdown > a {
+                font-size: 9px;
+                padding: 6px 8px;
+                min-width: 50px;
+                height: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="notification-container"></div>
+
+<header>
+    <div class="header-top">
+        <h1>DRIFT DISTRICT</h1>
+        <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        
+        <div class="dropdown">
+            <a>Company ▼</a>
+            <div class="dropdown-content">
+                <a href="about.html">About Us</a>
+                <a href="team.html">Our Team</a>
+                <a href="suppliers.html">Suppliers</a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <a>Support ▼</a>
+            <div class="dropdown-content">
+                <a href="contact.html">Contact</a>
+                <a href="admin.html">Admin Panel</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2 class="floating-icon shimmer-text">Street Passion Starts Here</h2>
+    <p>Built for Gen Z. Designed for expression.</p>
+    <a href="products.html" class="btn">Shop Now</a>
+</section>
+
+<section class="featured">
+    <h2 style="text-align: center; margin-bottom: 40px;">Trending Drops 🔥</h2>
+    <div class="products" id="trending-grid"><p style="text-align: center; color: #888;">Loading...</p></div>
+</section>
+
+<script src="script.js"></script>
+<script>
+    function loadTrending() {
+        const trendingGrid = document.getElementById('trending-grid');
+        if (!trendingGrid) return;
+        
+        if (typeof inventory === 'undefined' || typeof productReviews === 'undefined') {
+            setTimeout(loadTrending, 100);
+            return;
+        }
+        
+        const getAverageRating = (productName) => {
+            const reviews = productReviews[productName] || [];
+            if (reviews.length === 0) return 0;
+            const sum = reviews.reduce((acc, r) => acc + r.stars, 0);
+            return (sum / reviews.length).toFixed(1);
+        };
+        
+        const getStarHTML = (rating) => {
+            const numRating = parseFloat(rating);
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= numRating) stars += '★';
+                else if (i - 0.5 <= numRating) stars += '½';
+                else stars += '☆';
+            }
+            return stars;
+        };
+        
+        const formatReviewCount = (count) => {
+            if (count >= 1000) return (count / 1000).toFixed(1) + 'k';
+            return count;
+        };
+        
+        const isTopRated = (productName) => {
+            return ["OG TEE", "NIGHT HOODIE", "SNAPBACK", "STREET RUNNER", "BACKPACK"].includes(productName);
+        };
+        
+        const trendingItems = [
+            inventory.tees[0],      
+            inventory.hoodies[0],   
+            inventory.caps[0],      
+            inventory.shoes[1],     
+            inventory.acc[3]        
+        ];
+        
+        trendingGrid.innerHTML = trendingItems.map(item => {
+            const avgRating = getAverageRating(item.name);
+            const reviews = productReviews[item.name] || [];
+            const reviewCount = reviews.length;
+            const topRated = isTopRated(item.name);
+            
+            return `
+            <div class="card ${topRated ? 'top-rated' : ''}">
+                ${topRated ? '<div class="top-rated-badge">🔥 TOP RATED</div>' : ''}
+                <img src="images/${item.img}" alt="${item.name}">
+                <h3 class="shimmer-text">${item.name}</h3>
+                <p>₱${item.price}</p>
+                
+                <div class="review-section">
+                    <div class="stars">${getStarHTML(avgRating)}</div>
+                    <div class="review-count">${formatReviewCount(reviewCount)} reviews • ${avgRating}/5 stars</div>
+                </div>
+                
+                <button class="btn add-to-cart" data-name="${item.name}" data-price="${item.price}">Add to Cart</button>
+            </div>
+        `}).join('');
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(loadTrending, 300);
+    });
+</script>
+
+</body>
+</html>
