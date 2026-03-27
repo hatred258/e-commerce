@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Suppliers - Drift District</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .shimmer-text {
+            background: linear-gradient(90deg, #fff, #f5c518, #fff, #f5c518);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        @keyframes shine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating-icon {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 10px;
+            animation: float 3s ease-in-out infinite !important;
+        }
+
+        .suppliers-container {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .supplier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .supplier-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .supplier-card:hover {
+            border-color: #f5c518;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(245, 197, 24, 0.1);
+        }
+
+        .supplier-icon {
+            width: 80px;
+            height: 80px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border: 2px solid #f5c518;
+        }
+
+        .supplier-icon i {
+            font-size: 32px;
+            color: #f5c518;
+        }
+
+        .supplier-products {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+        }
+
+        .supplier-products span {
+            display: inline-block;
+            background: rgba(245, 197, 24, 0.1);
+            color: #f5c518;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 11px;
+            margin: 3px;
+            text-transform: uppercase;
+        }
+
+        .partnership-badge {
+            display: inline-block;
+            background: #f5c518;
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="notification-container"></div>
+
+<header>
+    <div class="header-top">
+        <h1>DRIFT DISTRICT</h1>
+        <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        
+        <div class="dropdown">
+            <a>Company ▼</a>
+            <div class="dropdown-content">
+                <a href="about.html">About Us</a>
+                <a href="team.html">Our Team</a>
+                <a href="suppliers.html">Suppliers</a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <a>Support ▼</a>
+            <div class="dropdown-content">
+                <a href="contact.html">Contact</a>
+                <a href="admin.html">Admin Panel</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="suppliers-container">
+    <h2 class="floating-icon shimmer-text" style="font-size: 42px; text-align: center; margin-bottom: 10px;">OUR SUPPLIERS</h2>
+    <p style="text-align: center; color: #888; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 3px; font-size: 14px;">Trusted Partners in Quality</p>
+    
+    <div class="supplier-grid">
+        
+        <div class="supplier-card">
+            <div class="supplier-icon">
+                <i class="fas fa-tshirt"></i>
+            </div>
+            <h3 style="color: #fff; margin-bottom: 10px;">StreetWear Mfg Co.</h3>
+            <p style="color: #888; font-size: 14px; line-height: 1.6;">Premium apparel manufacturing since 2015. Specializing in high-quality cotton blends and sustainable production methods.</p>
+            <div class="supplier-products">
+                <span>OG TEE</span>
+                <span>SMOKE TEE</span>
+                <span>ZIP HOODIE</span>
+                <span>DRIFT DAD HAT</span>
+                <span>BELT</span>
+            </div>
+            <span class="partnership-badge">Since 2020</span>
+        </div>
+
+        <div class="supplier-card">
+            <div class="supplier-icon">
+                <i class="fas fa-moon"></i>
+            </div>
+            <h3 style="color: #fff; margin-bottom: 10px;">Midnight Garments</h3>
+            <p style="color: #888; font-size: 14px; line-height: 1.6;">Night-shift specialists. Premium fleece and heavyweight fabrics for that perfect street feel.</p>
+            <div class="supplier-products">
+                <span>NIGHT HOODIE</span>
+                <span>STREET HOODIE</span>
+            </div>
+            <span class="partnership-badge">Since 2021</span>
+        </div>
+
+        <div class="supplier-card">
+            <div class="supplier-icon">
+                <i class="fas fa-shoe-prints"></i>
+            </div>
+            <h3 style="color: #fff; margin-bottom: 10px;">Velocity Footwear</h3>
+            <p style="color: #888; font-size: 14px; line-height: 1.6;">Urban movement specialists. Crafting sneakers that blend performance with street aesthetics.</p>
+            <div class="supplier-products">
+                <span>STREET RUNNER</span>
+                <span>LOW TOPS</span>
+            </div>
+            <span class="partnership-badge">Since 2022</span>
+        </div>
+
+        <div class="supplier-card">
+            <div class="supplier-icon">
+                <i class="fas fa-hat-cowboy"></i>
+            </div>
+            <h3 style="color: #fff; margin-bottom: 10px;">Headwear Pro</h3>
+            <p style="color: #888; font-size: 14px; line-height: 1.6;">Headwear artisans with decades of experience in caps, beanies, and urban accessories.</p>
+            <div class="supplier-products">
+                <span>SNAPBACK</span>
+                <span>BUCKET HAT</span>
+                <span>TRUCKER CAP</span>
+            </div>
+            <span class="partnership-badge">Since 2020</span>
+        </div>
+
+        <div class="supplier-card">
+            <div class="supplier-icon">
+                <i class="fas fa-mountain"></i>
+            </div>
+            <h3 style="color: #fff; margin-bottom: 10px;">Mountain Pass Apparel</h3>
+            <p style="color: #888; font-size: 14px; line-height: 1.6;">Inspired by touge racing culture. Technical fabrics meets street style.</p>
+            <div class="supplier-products">
+                <span>TOUGE TEE</span>
+                <span>RACE HOODIE</span>
+                <span>STREET CAP</span>
+                <span>BACKPACK</span>
+            </div>
+            <span class="partnership-badge">Since 2021</span>
+        </div>
+
+        <div class="supplier-card">
+            <div class="supplier-icon">
+                <i class="fas fa-walking"></i>
+            </div>
+            <h3 style="color: #fff; margin-bottom: 10px;">Sole Movement Co.</h3>
+            <p style="color: #888; font-size: 14px; line-height: 1.6;">Footwear innovators focusing on comfort, durability, and that unmistakable street silhouette.</p>
+            <div class="supplier-products">
+                <span>STREET KICKS</span>
+                <span>TOUGE SLIDES</span>
+                <span>HIGH TOPS</span>
+            </div>
+            <span class="partnership-badge">Since 2022</span>
+        </div>
+
+        <div class="supplier-card">
+            <div class="supplier-icon">
+                <i class="fas fa-cut"></i>
+            </div>
+            <h3 style="color: #fff; margin-bottom: 10px;">Urban Threads Inc.</h3>
+            <p style="color: #888; font-size: 14px; line-height: 1.6;">Cutting-edge apparel design. From sketch to street, they bring visions to life.</p>
+            <div class="supplier-products">
+                <span>LOGO HOODIE</span>
+                <span>CREW TEE</span>
+                <span>DRIFT TEE</span>
+            </div>
+            <span class="partnership-badge">Since 2020</span>
+        </div>
+
+        <div class="supplier-card">
+            <div class="supplier-icon">
+                <i class="fas fa-key"></i>
+            </div>
+            <h3 style="color: #fff; margin-bottom: 10px;">Micro Goods Ltd.</h3>
+            <p style="color: #888; font-size: 14px; line-height: 1.6;">Precision accessories and small goods. Metalwork, keychains, and detailed craftsmanship.</p>
+            <div class="supplier-products">
+                <span>KEYCHAIN</span>
+            </div>
+            <span class="partnership-badge">Since 2023</span>
+        </div>
+
+        <div class="supplier-card">
+            <div class="supplier-icon">
+                <i class="fas fa-print"></i>
+            </div>
+            <h3 style="color: #fff; margin-bottom: 10px;">Print House 88</h3>
+            <p style="color: #888; font-size: 14px; line-height: 1.6;">Vinyl and screen printing experts. Weatherproof stickers and premium graphic applications.</p>
+            <div class="supplier-products">
+                <span>STICKER PACK</span>
+            </div>
+            <span class="partnership-badge">Since 2022</span>
+        </div>
+
+        <div class="supplier-card">
+            <div class="supplier-icon">
+                <i class="fas fa-shopping-bag"></i>
+            </div>
+            <h3 style="color: #fff; margin-bottom: 10px;">Carry All Mfg.</h3>
+            <p style="color: #888; font-size: 14px; line-height: 1.6;">Bag and carry specialists. Canvas goods built for daily street wear.</p>
+            <div class="supplier-products">
+                <span>TOTE BAG</span>
+            </div>
+            <span class="partnership-badge">Since 2021</span>
+        </div>
+
+        <div class="supplier-card">
+            <div class="supplier-icon">
+                <i class="fas fa-sunglasses"></i>
+            </div>
+            <h3 style="color: #fff; margin-bottom: 10px;">Shade Co.</h3>
+            <p style="color: #888; font-size: 14px; line-height: 1.6;">Eyewear designers blending UV protection with street fashion aesthetics.</p>
+            <div class="supplier-products">
+                <span>SUNGLASSES</span>
+            </div>
+            <span class="partnership-badge">Since 2023</span>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="social-links">
+            <a href="#" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank" class="discord"><i class="fab fa-discord"></i></a>
+        </div>
+        <p class="copyright">
+            © 2026 DRIFT DISTRICT. STAY SIDEWAYS. 🏎️💨
+        </p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
