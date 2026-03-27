@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Drift District</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+
+        .shimmer-text {
+            background: linear-gradient(90deg, #fff, #f5c518, #fff, #f5c518);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        @keyframes shine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating-icon {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 10px;
+            animation: float 3s ease-in-out infinite !important;
+        }
+
+        .contact-details p {
+            color: #ffffff; 
+            font-size: 1.1rem;
+        }
+
+        .card {
+            background: #111;
+            border: 1px solid #333;
+            padding: 30px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: #f5c518;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+
+<div id="notification-container"></div>
+
+<header>
+    <div class="header-top">
+        <h1>DRIFT DISTRICT</h1>
+        <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        
+
+        <div class="dropdown">
+            <a>Company ▼</a>
+            <div class="dropdown-content">
+                <a href="about.html">About Us</a>
+                <a href="team.html">Our Team</a>
+                <a href="suppliers.html">Suppliers</a>
+            </div>
+        </div>
+        
+
+        <div class="dropdown">
+            <a>Support ▼</a>
+            <div class="dropdown-content">
+                <a href="contact.html">Contact</a>
+                <a href="admin.html">Admin Panel</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section style="padding: 100px 20px; text-align: center; max-width: 900px; margin: 0 auto;">
+    <h2 class="floating-icon shimmer-text" style="font-size: 42px; margin-bottom: 40px;">GET IN TOUCH</h2>
+    
+    <div class="contact-details" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+        
+        <div class="card">
+            <h3 style="color: #f5c518; margin-bottom: 10px; font-weight: 800;">EMAIL</h3>
+            <p>driftdistrict@email.com</p>
+        </div>
+
+        <div class="card">
+            <h3 style="color: #f5c518; margin-bottom: 10px; font-weight: 800;">PHONE</h3>
+            <p>0906 447 3394</p>
+        </div>
+
+        <div class="card">
+            <h3 style="color: #f5c518; margin-bottom: 10px; font-weight: 800;">INSTAGRAM</h3>
+            <p>@driftdistrict</p>
+        </div>
+
+    </div>
+
+    <div class="cart-container" style="margin-top: 60px; text-align: left; background: #111; padding: 40px; border-radius: 12px; border: 1px solid #222;">
+        <h3 class="shimmer-text" style="text-align: center; margin-bottom: 30px; font-size: 24px;">SEND A MESSAGE</h3>
+        <form class="checkout-form">
+
+            <input type="email" placeholder="Your Email" required>
+            <textarea style="width: 100%; padding: 14px; background: #000; border: 1px solid #333; color: white; border-radius: 10px; outline: none; height: 120px; margin-bottom: 12px; font-family: inherit;" placeholder="What's on your mind?"></textarea>
+            <button type="button" class="btn" onclick="showNotification('Message Sent! We\'ll get back to you, bro.')" style="width: 100%;">Submit</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="social-links">
+            <a href="#" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank" class="discord"><i class="fab fa-discord"></i></a>
+        </div>
+        <p class="copyright">
+            © 2026 DRIFT DISTRICT. STAY SIDEWAYS. 🏎️💨
+        </p>
+    </div>
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+</html>
