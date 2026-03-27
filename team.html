@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - Drift District</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .shimmer-text {
+            background: linear-gradient(90deg, #fff, #f5c518, #fff, #f5c518);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        @keyframes shine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating-icon {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 10px;
+            animation: float 3s ease-in-out infinite !important;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245, 197, 24, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(245, 197, 24, 0); }
+        }
+        
+        .team-card {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+        
+        .team-card:nth-child(1) { animation-delay: 0.1s; }
+        .team-card:nth-child(2) { animation-delay: 0.3s; }
+        .team-card:nth-child(3) { animation-delay: 0.5s; }
+        
+        .photo-frame {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: #1a1a1a;
+        }
+        
+        .photo-frame:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(245, 197, 24, 0.3);
+        }
+        
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+            z-index: 1;
+        }
+        
+        .photo-frame:hover::before { left: 100%; }
+        
+        .photo-frame img { transition: transform 0.4s ease; }
+        .photo-frame:hover img { transform: scale(1.1); }
+        
+        .role-badge {
+            display: inline-block;
+            animation: pulse 2s infinite;
+            border-radius: 20px;
+            padding: 5px 15px;
+            background: rgba(245, 197, 24, 0.1);
+        }
+        
+        .social-icons {
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+        
+        .team-card:hover .social-icons {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .social-icons a {
+            color: #888;
+            margin: 0 10px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: #f5c518;
+            transform: translateY(-5px);
+        }
+
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid #222;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+
+<div id="notification-container"></div>
+
+<header>
+    <div class="header-top">
+        <h1>DRIFT DISTRICT</h1>
+        <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        
+        <div class="dropdown">
+            <a>Company ▼</a>
+            <div class="dropdown-content">
+                <a href="about.html">About Us</a>
+                <a href="team.html">Our Team</a>
+                <a href="suppliers.html">Suppliers</a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <a>Support ▼</a>
+            <div class="dropdown-content">
+                <a href="contact.html">Contact</a>
+                <a href="admin.html">Admin Panel</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section style="padding: 80px 20px; text-align: center; max-width: 900px; margin: 0 auto;">
+    <h2 class="floating-icon shimmer-text" style="font-size: 42px; margin-bottom: 10px; letter-spacing: 2px;">THE TRINITY</h2>
+    <p style="font-size: 16px; color: #888; margin-bottom: 60px; text-transform: uppercase; letter-spacing: 3px;">Three Minds. One Vision.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px;">
+        
+        <div class="card team-card" style="padding: 40px; position: relative; background: #111; border: 1px solid #333; border-radius: 12px;">
+            <div class="photo-frame" style="width: 180px; height: 220px; margin: 0 auto 25px; border: 3px solid #f5c518; border-radius: 12px;">
+                <img src="images/danica.jpg" alt="Danica Ferrer" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 class="name-text shimmer-text" style="margin-bottom: 8px; font-size: 24px;">DANICA FERRER</h3>
+            <p class="role-badge" style="color: #f5c518; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border: 1px solid #f5c518;">Founder & CEO</p>
+            <p style="color: #888; font-size: 15px; line-height: 1.6;">Started Drift District from nothing but a dream and a sketchbook. Leading the crew with passion, grit, and an unstoppable vision.</p>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+
+        <div class="card team-card" style="padding: 40px; position: relative; background: #111; border: 1px solid #333; border-radius: 12px;">
+            <div class="photo-frame" style="width: 180px; height: 220px; margin: 0 auto 25px; border: 3px solid #f5c518; border-radius: 12px;">
+                <img src="images/jessel.jpg" alt="Jessel Ann Estaño" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 class="name-text shimmer-text" style="margin-bottom: 8px; font-size: 24px;">JESSEL ANN ESTAÑO</h3>
+            <p class="role-badge" style="color: #f5c518; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border: 1px solid #f5c518;">Manager</p>
+            <p style="color: #888; font-size: 15px; line-height: 1.6;">The backbone of every drop. Turns chaos into order and dreams into reality. Sharp focus and a heart for the hustle.</p>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+
+        <div class="card team-card" style="padding: 40px; position: relative; background: #111; border: 1px solid #333; border-radius: 12px;">
+            <div class="photo-frame" style="width: 180px; height: 220px; margin: 0 auto 25px; border: 3px solid #f5c518; border-radius: 12px;">
+                <img src="images/ivy.jpg" alt="Ivy May Villas" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 class="name-text shimmer-text" style="margin-bottom: 8px; font-size: 24px;">IVY MAY VILLAS</h3>
+            <p class="role-badge" style="color: #f5c518; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border: 1px solid #f5c518;">Staff</p>
+            <p style="color: #888; font-size: 15px; line-height: 1.6;">The spark that keeps the fire burning. From packing orders with care to hyping up the community, she brings heart to every task.</p>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="social-links">
+            <a href="#" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank" class="discord"><i class="fab fa-discord"></i></a>
+        </div>
+        <p class="copyright">
+            © 2026 DRIFT DISTRICT. STAY SIDEWAYS. 🏎️💨
+        </p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
