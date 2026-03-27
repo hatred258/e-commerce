@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Drift District</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .shimmer-text {
+            background: linear-gradient(90deg, #fff, #f5c518, #fff, #f5c518);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        @keyframes shine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating-icon {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 10px;
+            animation: float 3s ease-in-out infinite !important;
+        }
+
+        .products-header-wrapper {
+            padding-top: 40px;
+            text-align: center;
+        }
+
+        .search-container {
+            max-width: 400px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 12px 40px 12px 20px;
+            border: 2px solid #f5c518;
+            border-radius: 25px;
+            background: #000;
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-bar::placeholder {
+            color: #666;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #f5c518;
+        }
+
+        .filters-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(245, 197, 24, 0.1);
+            border: 2px solid #f5c518;
+            border-radius: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .filter-group label {
+            color: #f5c518;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            padding: 8px 15px;
+            border: 1px solid #f5c518;
+            border-radius: 8px;
+            background: #000;
+            color: #fff;
+            outline: none;
+        }
+
+        .price-range {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .price-range input {
+            width: 100px;
+        }
+
+        .clear-filters {
+            background: #f5c518;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .card {
+            position: relative;
+        }
+
+        .review-section {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+        }
+
+        .stars {
+            color: #f5c518;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .review-count {
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .review-btn {
+            background: transparent;
+            border: 1px solid #f5c518;
+            color: #f5c518;
+            padding: 5px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .review-btn:hover {
+            background: #f5c518;
+            color: #000;
+        }
+
+        .review-form {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+        }
+
+        .review-form.show {
+            display: block;
+        }
+
+        .star-input {
+            font-size: 24px;
+            cursor: pointer;
+            color: #444;
+        }
+
+        .star-input.active {
+            color: #f5c518;
+        }
+
+        .review-text {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            border: 1px solid #f5c518;
+            border-radius: 5px;
+            background: #000;
+            color: #fff;
+            resize: none;
+        }
+
+        .submit-review {
+            background: #f5c518;
+            color: #000;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .reviews-list {
+            max-height: 100px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+
+        .review-item {
+            background: rgba(245, 197, 24, 0.1);
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+
+        .review-item .review-stars {
+            color: #f5c518;
+        }
+    </style>
+</head>
+<body>
+
+<div id="notification-container"></div>
+
+<header>
+    <div class="header-top">
+        <h1>DRIFT DISTRICT</h1>
+        <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        
+        <div class="dropdown">
+            <a>Company ▼</a>
+            <div class="dropdown-content">
+                <a href="about.html">About Us</a>
+                <a href="team.html">Our Team</a>
+                <a href="suppliers.html">Suppliers</a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <a>Support ▼</a>
+            <div class="dropdown-content">
+                <a href="contact.html">Contact</a>
+                <a href="admin.html">Admin Panel</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="products-header-wrapper">
+    <h2 class="floating-icon shimmer-text" style="font-size: 42px;">All Products</h2>
+    
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-bar" placeholder="Search products...">
+        <span class="search-icon">🔍</span>
+    </div>
+</div>
+
+<div class="filters-container">
+    <div class="filter-group">
+        <label>Sort By</label>
+        <select id="sortFilter" onchange="applyFilters()">
+            <option value="default">Default</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="name-az">Name: A-Z</option>
+            <option value="name-za">Name: Z-A</option>
+        </select>
+    </div>
+    
+    <div class="filter-group">
+        <label>Price Range</label>
+        <div class="price-range">
+            <input type="number" id="minPrice" placeholder="Min" min="0" onchange="applyFilters()">
+            <span style="color: #f5c518;">-</span>
+            <input type="number" id="maxPrice" placeholder="Max" min="0" onchange="applyFilters()">
+        </div>
+    </div>
+    
+    <button class="clear-filters" onclick="clearFilters()">Clear Filters</button>
+</div>
+
+<div class="category-tabs" style="text-align: center; margin: 30px 0;">
+    <button class="tab-btn active" onclick="showCat('all', this)">ALL</button>
+    <button class="tab-btn" onclick="showCat('tees', this)">TEES</button>
+    <button class="tab-btn" onclick="showCat('hoodies', this)">HOODIES</button>
+    <button class="tab-btn" onclick="showCat('caps', this)">CAPS</button>
+    <button class="tab-btn" onclick="showCat('shoes', this)">SHOES</button>
+    <button class="tab-btn" onclick="showCat('acc', this)">ACCESSORIES</button>
+</div>
+
+<div class="products" id="product-grid"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
